@@ -15,7 +15,7 @@ def load_chunks():
 
 chunks = load_chunks()
 
-# Initialize OpenAI client
+# Initialize OpenAI client using V1 SDK syntax
 client = openai.OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 def search_chunks(query, chunks):
