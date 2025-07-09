@@ -19,14 +19,13 @@ chunks = load_chunks()
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 def search_chunks(query, chunks):
-    prompt = f"You are a helpful HR assistant. Based on the employee handbook, answer the question:
+    prompt = f"""You are a helpful HR assistant. Based on the employee handbook, answer the question:
 
 "{query}"
 
 Here are some relevant policy excerpts:
-
-"
-    top_chunks = chunks[:5]  # Naive selection for now
+"""
+    top_chunks = chunks[:5]
     prompt += "\n\n".join(top_chunks)
     prompt += "\n\nAnswer the question clearly and briefly."
 
