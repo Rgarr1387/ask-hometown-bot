@@ -15,8 +15,8 @@ def load_chunks():
 
 chunks = load_chunks()
 
-# Initialize OpenAI
-openai.api_key = st.secrets["OPENAI_API_KEY"]
+# Initialize OpenAI client
+client = openai.OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 def search_chunks(query, chunks):
     prompt = f"""You are a helpful HR assistant. Based on the employee handbook, answer the question:
@@ -29,7 +29,7 @@ Here are some relevant policy excerpts:
     prompt += "\n\n".join(top_chunks)
     prompt += "\n\nAnswer the question clearly and briefly."
 
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model="gpt-4",
         messages=[{"role": "user", "content": prompt}]
     )
