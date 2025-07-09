@@ -30,7 +30,7 @@ Here are some relevant policy excerpts:
     prompt += "\n\nAnswer the question clearly and briefly."
 
     response = client.chat.completions.create(
-        model="gpt-4",
+        model="gpt-3.5-turbo",
         messages=[{"role": "user", "content": prompt}]
     )
     return response.choices[0].message.content.strip()
